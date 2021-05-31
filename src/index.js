@@ -28,12 +28,12 @@ function isGoogleSlides() {
 function wireUpEvents(obs) {
     console.log("Wiring up Events");
 
-    document.getElementsByClassName(prevClass)[0].addEventListener("click", function() {
-        onNavigate(obs);
-    });
-    document.getElementsByClassName(nextClass)[0].addEventListener("click", function() {
-        onNavigate(obs);
-    });
+    const onEvent = () => { onNavigate(obs) };
+
+    document.getElementsByClassName(prevClass)[0].addEventListener("click", onEvent);
+    document.getElementsByClassName(nextClass)[0].addEventListener("click", onEvent);
+
+    document.addEventListener("keydown", onEvent)
 }
 
 /**
@@ -53,7 +53,7 @@ function onNavigate(obs) {
             try {
                 console.log("Setting Scene: " + scene);
                 obs.send("SetCurrentScene", { "scene-name": scene });
-            } catch(error){ 
+            } catch(error){
                 console.log(error);
             }
         }

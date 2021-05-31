@@ -16,5 +16,10 @@
     "https://*/*",
     "http://*/*",
     "tabs"
-  ]
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "GOBSSlides@coreyja.com"
+    }
+  }
 }
